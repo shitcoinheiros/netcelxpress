@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLX Clone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        /* Header */
+        header {
+            background-color: #f7f7f7;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 10px 0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #f56c02;
+        }
+        
+        .search-bar {
+            display: flex;
+            flex-grow: 1;
+            max-width: 600px;
+            margin: 0 20px;
+        }
+        
+        .search-bar input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 2px solid #f56c02;
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .search-bar button {
+            background-color: #f56c02;
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .location {
+            display: flex;
+            align-items: center;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .location i {
+            margin-right: 5px;
+        }
+        
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        
+        .categories {
+            display: flex;
+            list-style: none;
+        }
+        
+        .categories li {
+            margin-right: 20px;
+        }
+        
+        .categories a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .categories a:hover {
+            color: #f56c02;
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin-top: 20px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .ads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .ad-card {
+            background-color: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .ad-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .ad-image {
+            width: 100%;
+            height: 180px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        
+        .ad-info {
+            padding: 15px;
+        }
+        
+        .ad-price {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .ad-title {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .ad-location {
+            font-size: 12px;
+            color: #999;
+            display: flex;
+            align-items: center;
+        }
+        
+        .ad-location i {
+            margin-right: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #f7f7f7;
+            border-top: 1px solid #e5e5e5;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-column a {
+            text-decoration: none;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .footer-column a:hover {
+            color: #f56c02;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e5;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+            }
+            
+            .search-bar {
+                margin: 10px 0;
+                max-width: 100%;
+            }
+            
+            .header-nav {
+                overflow-x: auto;
+            }
+            
+            .categories {
+                flex-wrap: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">OLX</div>
+                <div class="search-bar">
+                    <input type="text" placeholder="O que você procura?">
+                    <button>Buscar</button>
+                </div>
+                <div class="location">
+                    <i>📍</i> São Paulo
+                </div>
+            </div>
+            <div class="header-nav">
+                <ul class="categories">
+                    <li><a href="#">Carros, motos e outros</a></li>
+                    <li><a href="#">Imóveis</a></li>
+                    <li><a href="#">Eletrônicos e celulares</a></li>
+                    <li><a href="#">Para a sua casa</a></li>
+                    <li><a href="#">Vagas de emprego</a></li>
+                    <li><a href="#">Serviços</a></li>
+                    <li><a href="#">Mais categorias</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <h2 class="section-title">Anúncios em destaque</h2>
+        <div class="ads-grid">
+            <!-- Anúncio 1 -->
+            <div class="ad-card" onclick="window.open('https://exemplo.com/anuncio1', '_blank')">
+                <div class="ad-image">Imagem do produto</div>
+                <div class="ad-info">
+                    <div class="ad-price">R$ 1.200</div>
+                    <div class="ad-title">iPhone 11 64GB Branco - Tela 6.1" - Câmera Dupla 12MP</div>
+                    <div class="ad-location">
+                        <i>📍</i> São Paulo - SP
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Anúncio 2 -->
+            <div class="ad-card" onclick="window.open('https://exemplo.com/anuncio2', '_blank')">
+                <div class="ad-image">Imagem do produto</div>
+                <div class="ad-info">
+                    <div class="ad-price">R$ 45.000</div>
+                    <div class="ad-title">Honda Civic 2018/2019 LX 2.0 16V FLEX 4P AUTOMÁTICO</div>
+                    <div class="ad-location">
+                        <i>📍</i> Rio de Janeiro - RJ
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Anúncio 3 -->
+            <div class="ad-card" onclick="window.open('https://exemplo.com/anuncio3', '_blank')">
+                <div class="ad-image">Imagem do produto</div>
+                <div class="ad-info">
+                    <div class="ad-price">R$ 850</div>
+                    <div class="ad-title">Sofá 3 lugares retrátil e reclinável cinza - Novo</div>
+                    <div class="ad-location">
+                        <i>📍</i> Belo Horizonte - MG
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Anúncio 4 -->
+            <div class="ad-card" onclick="window.open('https://exemplo.com/anuncio4', '_blank')">
+                <div class="ad-image">Imagem do produto</div>
+                <div class="ad-info">
+                    <div class="ad-price">R$ 2.500</div>
+                    <div class="ad-title">Notebook Dell Inspiron 15 8GB RAM 256GB SSD Intel Core i5</div>
+                    <div class="ad-location">
+                        <i>📍</i> Brasília - DF
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Anúncio 5 -->
+            <div class="ad-card" onclick="window.open('https://exemplo.com/anuncio5', '_blank')">
+                <div class="ad-image">Imagem do produto</div>
+                <div class="ad-info">
+                    <div class="ad-price">R$ 1.800/mês</div>
+                    <div class="ad-title">Apartamento 2 quartos com garagem - Centro</div>
+                    <div class="ad-location">
+                        <i>📍</i> Porto Alegre - RS
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Anúncio 6 -->
+            <div class="ad-card" onclick="window.open('https://exemplo.com/anuncio6', '_blank')">
+                <div class="ad-image">Imagem do produto</div>
+                <div class="ad-info">
+                    <div class="ad-price">R$ 350</div>
+                    <div class="ad-title">Geladeira Electrolux 260L Cycle Defrost - Prata</div>
+                    <div class="ad-location">
+                        <i>📍</i> Salvador - BA
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title" style="margin-top: 40px;">Novos anúncios</h2>
+        <div class="ads-grid">
+            <!-- Anúncio 7 -->
+            <div class="ad-card" onclick="window.open('https://exemplo.com/anuncio7', '_blank')">
+                <div class="ad-image">Imagem do produto</div>
+                <div class="ad-info">
+                    <div class="ad-price">R$ 120</div>
+                    <div class="ad-title">Bicicleta Caloi Aro 29 21 Marchas Freio a Disco - Preta</div>
+                    <div class="ad-location">
+                        <i>📍</i> Curitiba - PR
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Anúncio 8 -->
+            <div class="ad-card" onclick="window.open('https://exemplo.com/anuncio8', '_blank')">
+                <div class="ad-image">Imagem do produto</div>
+                <div class="ad-info">
+                    <div class="ad-price">R$ 650</div>
+                    <div class="ad-title">PlayStation 4 Slim 500GB + 2 Controles - Usado</div>
+                    <div class="ad-location">
+                        <i>📍</i> Fortaleza - CE
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>OLX</h3>
+                    <ul>
+                        <li><a href="#">Sobre a OLX</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Imprensa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Descubra</h3>
+                    <ul>
+                        <li><a href="#">Mapa do site</a></li>
+                        <li><a href="#">Guia de segurança</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Anunciar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Termos de uso</a></li>
+                        <li><a href="#">Política de privacidade</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Ajuda</h3>
+                    <ul>
+                        <li><a href="#">Dúvidas frequentes</a></li>
+                        <li><a href="#">Como vender</a></li>
+                        <li><a href="#">Como comprar</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2023 OLX Clone - Todos os direitos reservados
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
