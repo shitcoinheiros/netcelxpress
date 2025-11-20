@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - Netcelxpress</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Header - mantido igual ao original */
+        header {
+            background-color: #f7f7f7;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #000080;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            font-size: 12px;
+            background-color: #000080;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 1px;
+            margin-left: 5px;
+        }
+
+        .slogan {
+            font-size: 10px;
+            color: #666;
+            margin-top: 2px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            color: #666;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .location i {
+            margin-right: 5px;
+            font-size: 16px;
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .categories {
+            display: flex;
+            list-style: none;
+        }
+
+        .categories li {
+            margin-right: 20px;
+        }
+
+        .categories a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .categories a:hover {
+            color: #000080;
+        }
+
+        .categories a:hover::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #000080;
+        }
+
+        /* Menu Hambúrguer */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            position: relative;
+            z-index: 101;
+        }
+
+        .hamburger-menu span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 250px;
+            background-color: #f7f7f7;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-categories {
+            list-style: none;
+            padding: 10px 0;
+        }
+
+        .mobile-categories li {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .mobile-categories a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .mobile-categories a:hover {
+            background-color: #f0f0f0;
+            color: #000080;
+        }
+
+        /* Conteúdo da página Sobre Nós */
+        .about-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://i.postimg.cc/NFpr9rs4/Whats-App-Image-2025-11-18-at-19-43-32.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .about-hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .about-hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            font-size: 32px;
+            color: #000080;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #000080;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .values-section {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            font-size: 40px;
+            color: #000080;
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .value-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .team-section {
+            margin-bottom: 60px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 5px solid #f0f0f0;
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-member h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .team-member p {
+            color: #666;
+            font-style: italic;
+        }
+
+        .cta-section {
+            background-color: #000080;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 60px;
+        }
+
+        .cta-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #FFA500;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #e59400;
+        }
+
+        /* Footer - mantido igual ao original */
+        footer {
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column a {
+            text-decoration: none;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .footer-column a:hover {
+            color: #4169E1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: transform 0.3s;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .whatsapp-button::before {
+            content: '\f232';
+            font-family: 'Font Awesome 6 Brands';
+            font-weight: 400;
+            color: white;
+            font-size: 40px;
+            line-height: 1;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: row;
+            }
+
+            .location {
+                display: none;
+            }
+
+            .header-nav {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .logo-img {
+                height: 40px;
+            }
+
+            .logo {
+                font-size: 28px;
+            }
+
+            .slogan {
+                font-size: 8px;
+            }
+
+            .about-hero h1 {
+                font-size: 32px;
+            }
+
+            .about-hero p {
+                font-size: 18px;
+            }
+
+            .about-text h2 {
+                font-size: 26px;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mobile-menu {
+                width: 200px;
+            }
+
+            .logo-img {
+                height: 35px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .slogan {
+                font-size: 8px;
+            }
+
+            .about-hero {
+                padding: 60px 0;
+            }
+
+            .about-hero h1 {
+                font-size: 28px;
+            }
+
+            .about-hero p {
+                font-size: 16px;
+            }
+
+            .about-text h2 {
+                font-size: 22px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            .value-card, .team-member {
+                padding: 20px;
+            }
+
+            .cta-section h2 {
+                font-size: 24px;
+            }
+
+            .cta-section p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-container">
+                    <img src="https://i.postimg.cc/gjKs4DdP/1000325359-removebg-preview.png" alt="Logo Netcelxpress" class="logo-img">
+                    <div class="logo-content">
+                        <div class="logo">Netcelxpress</div>
+                        <div class="slogan">Tudo em Fundição Doméstica e Industrial</div>
+                    </div>
+                </div>  
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="header-nav">
+                <ul class="categories">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="#linha-industrial">Linha Industrial</a></li>
+                    <li><a href="#linha-domestica">Linha Doméstica</a></li>
+                    <li><a href="https://wa.me/553798251298?text=Olá! Quero saber mais sobre peças sob medida." target="_blank">Peças Sob Medida</a></li>
+                    <li><a href="#">Atacado</a></li>
+                    <li><a href="#">Varejo</a></li>
+                    <li><a href="sobre-nos.html" style="color: #000080;">Sobre Nós</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Menu Mobile -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul class="mobile-categories">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#linha-industrial">Linha Industrial</a></li>
+                <li><a href="#linha-domestica">Linha Doméstica</a></li>
+                <li><a href="https://wa.me/553798251298?text=Olá! Quero saber mais sobre peças sob medida." target="_blank">Peças Sob Medida</a></li>
+                <li><a href="#">Atacado</a></li>
+                <li><a href="#">Varejo</a></li>
+                <li><a href="sobre-nos.html" style="color: #000080;">Sobre Nós</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Conteúdo da página Sobre Nós -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>Sobre a Netcelxpress</h1>
+            <p>Líder em soluções em alumínio e ferro fundido para as linhas doméstica e industrial</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="about-content">
+            <div class="about-text">
+                <h2>Nossa História</h2>
+                <p>A <strong>Netcelxpress</strong> é uma empresa com sólida tradição no mercado de fundição, localizada estrategicamente em Cláudio, Minas Gerais. Com anos de experiência e dedicação, nos especializamos na fabricação de peças em alumínio e ferro fundido para as linhas doméstica e industrial, atendendo às mais exigentes necessidades do mercado.</p>
+                
+                <p>Nossa trajetória é marcada pelo compromisso com a excelência, inovação tecnológica e qualidade superior em cada produto. Acreditamos que a durabilidade e o desempenho de nossos itens são reflexos diretos de nosso rigoroso controle de qualidade e do know-how acumulado ao longo dos anos.</p>
+                
+                <p>Mais do que simplesmente fabricar peças, desenvolvemos <strong>soluções completas</strong> que agregam valor aos negócios de nossos clientes e melhoram o dia a dia dos consumidores finais. Cada produto Netcelxpress é resultado de um processo cuidadoso que combina técnica apurada e materiais da mais alta qualidade.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://i.postimg.cc/3r036GQ3/Whats-App-Image-2025-11-18-at-17-38-28.jpg" alt="Nossa Fábrica">
+            </div>
+        </section>
+
+        <section class="values-section">
+            <h2 class="section-title">Nossos Valores</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Qualidade Superior</h3>
+                    <p>Comprometemo-nos com a excelência em cada etapa do processo produtivo, garantindo produtos duráveis e de alto desempenho que superam as expectativas dos clientes.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Compromisso com o Cliente</h3>
+                    <p>Estabelecemos parcerias duradouras baseadas na confiança, transparência e atendimento personalizado, entendendo e atendendo às necessidades específicas de cada cliente.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Inovação Constante</h3>
+                    <p>Investimos continuamente em pesquisa, desenvolvimento e modernização de processos para oferecer soluções inovadoras e competitivas no mercado de fundição.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Durabilidade Comprovada</h3>
+                    <p>Nossos produtos são fabricados com materiais de primeira linha e processos controlados, resultando em peças resistentes que suportam as condições mais exigentes de uso.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2 class="section-title">Nossa Equipe</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="https://i.postimg.cc/8CvFN0q7/Whats-App-Image-2025-11-18-at-17-38-30.jpg" alt="Fundador">
+                    </div>
+                    <h3>Fundador</h3>
+                    <p>Liderança e Visão</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="https://i.postimg.cc/D0J33rbZ/Whats-App-Image-2025-11-18-at-17-38-26.jpg" alt="Engenheiro de Produção">
+                    </div>
+                    <h3>Engenheiros</h3>
+                    <p>Especialistas em Fundição</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="https://i.postimg.cc/SQgKF4JP/Whats-App-Image-2025-11-18-at-17-38-29.jpg" alt="Técnicos">
+                    </div>
+                    <h3>Técnicos</h3>
+                    <p>Profissionais Qualificados</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="https://i.postimg.cc/9XgcgBnb/Whats-App-Image-2025-11-18-at-17-38-30-(1).jpg" alt="Atendimento">
+                    </div>
+                    <h3>Atendimento</h3>
+                    <p>Suporte ao Cliente</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Pronto para Trabalhar Conosco?</h2>
+            <p>Entre em contato e descubra como nossas soluções em alumínio e ferro fundido podem atender às suas necessidades específicas com qualidade, agilidade e preços competitivos.</p>
+            <a href="https://wa.me/553798251298?text=Olá! Gostaria de saber mais sobre os produtos Netcelxpress" class="cta-button" target="_blank">Fale Conosco</a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Netcelxpress</h3>
+                    <ul>
+                        <li><a href="sobre-nos.html">Sobre a Empresa</a></li>
+                        <li><a href="#">Nossa História</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Visite-nos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Produtos</h3>
+                    <ul>
+                        <li><a href="#linha-industrial">Linha Industrial</a></li>
+                        <li><a href="#linha-domestica">Linha Doméstica</a></li>
+                        <li><a href="https://wa.me/553798251298?text=Olá! Quero saber mais sobre peças sob medida." target="_blank">Peças Sob Medida</a></li>
+                        <li><a href="#">Catálogo Completo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#">Atacado</a></li>
+                        <li><a href="#">Varejo</a></li>
+                        <li><a href="#">Encomendas</a></li>
+                        <li><a href="#">Entrega</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Ajuda</h3>
+                    <ul>
+                        <li><a href="#">Dúvidas Frequentes</a></li>
+                        <li><a href="#">Como Comprar</a></li>
+                        <li><a href="#">Formas de Pagamento</a></li>
+                        <li><a href="#">Política de Entrega</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 Netcelxpress - Todos os direitos reservados 
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/553798251298?text=Olá! Gostaria de saber mais sobre os produtos em ferro fundido" 
+       class="whatsapp-button" 
+       target="_blank">
+    </a>
+
+    <script>
+        // JavaScript para o menu hambúrguer
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            hamburgerMenu.addEventListener('click', function(e) {
+                e.stopPropagation(); // Impede que o clique se propague
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Fechar o menu ao clicar fora dele
+            document.addEventListener('click', function(e) {
+                if (!hamburgerMenu.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
