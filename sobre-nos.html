@@ -391,82 +391,66 @@
             background-color: #e59400;
         }
 
+        /* Footer */
+        footer {
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
 
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
 
+        .footer-column {
+            margin-bottom: 20px;
+        }
 
-/* Footer */
-footer {
-    background-color: #2d2d2d;
-    color: #fff;
-    padding: 40px 0 20px;
-    margin-top: 40px;
-}
+        .footer-column h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
 
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
 
-.footer-column {
-    margin-bottom: 20px;
-}
+        .footer-column li {
+            margin-bottom: 8px;
+        }
 
-.footer-column h3 {
-    font-size: 16px;
-    margin-bottom: 15px;
-    color: #fff;
-}
+        .footer-column a {
+            text-decoration: none;
+            color: #ccc;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
 
-.footer-column ul {
-    list-style: none;
-}
+        .footer-column a:hover {
+            color: #4169E1;
+        }
 
-.footer-column li {
-    margin-bottom: 8px;
-}
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #999;
+            font-size: 14px;
+            grid-column: 1 / -1;
+        }
 
-.footer-column a {
-    text-decoration: none;
-    color: #ccc;
-    font-size: 14px;
-}
-
-.footer-column a:hover {
-    color: #4169E1;
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid #444;
-    color: #999;
-    font-size: 14px;
-    grid-column: 1 / -1;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .footer-content {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .footer-column {
-        min-width: 100%;
-    }
-}
-
-
-        
+        /* Ajuste para a imagem SSL */
+        .footer-column img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
 
         .whatsapp-button {
             position: fixed;
@@ -548,6 +532,11 @@ footer {
             .section-title {
                 font-size: 26px;
             }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -598,6 +587,11 @@ footer {
             .cta-section p {
                 font-size: 16px;
             }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
     </style>
 </head>
@@ -621,11 +615,8 @@ footer {
             </div>
             <div class="header-nav">
                 <ul class="categories">
-                    
                     <li><a href="index.html">Início</a></li>
-                 
                     <li><a href="https://wa.me/553798251298?text=Olá! Quero saber mais sobre peças sob medida." target="_blank">Peças Sob Medida</a></li>
-              
                     <li><a href="sobre-nos.html" style="color: #000080;">Sobre Nós</a></li>
                     <li><a href="#">Contato</a></li>
                 </ul>
@@ -635,15 +626,13 @@ footer {
         <div class="mobile-menu" id="mobileMenu">
             <ul class="mobile-categories">
                 <li><a href="index.html">Início</a></li>
-              
                 <li><a href="https://wa.me/553798251298?text=Olá! Quero saber mais sobre peças sob medida." target="_blank">Peças Sob Medida</a></li>
-               
                 <li><a href="sobre-nos.html" style="color: #000080;">Sobre Nós</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
         </div>
     </header>
-  <div class="footer-column">
+
     <!-- Conteúdo da página Sobre Nós -->
     <section class="about-hero">
         <div class="container">
@@ -651,7 +640,6 @@ footer {
             <p>Líder em soluções em alumínio e ferro fundido para as linhas doméstica e industrial</p>
         </div>
     </section>
-  </div>
       
     <div class="container">
         <section class="about-content">
@@ -668,7 +656,6 @@ footer {
             </div>
         </section>
         
-  <div class="footer-column">
         <section class="values-section">
             <h2 class="section-title">Nossos Valores</h2>
             <div class="values-grid">
@@ -703,8 +690,6 @@ footer {
             </div>
         </section>
 
-  </div>
-
         <section class="cta-section">
             <h2>Pronto para Trabalhar Conosco?</h2>
             <p>Entre em contato e descubra como nossas soluções em alumínio e ferro fundido podem atender às suas necessidades específicas com qualidade, agilidade e preços competitivos.</p>
@@ -719,49 +704,37 @@ footer {
                 <div class="footer-column">
                     <h3>Netcelxpress</h3>
                     <ul>
-                          <li><a href="sobre-nos.html">Sobre a Empresa</a></li>
-                      
+                        <li><a href="sobre-nos.html">Sobre a Empresa</a></li>
                         <li><a href="https://wa.me/553798251298?text=">Contato</a></li>
-                      <li><a href="mailto:netcelxpress@gmail.com">netcelxpress@gmail.com</a></li>
-
-                       <li><a href="tel:31998251298">(31) 99825-1298</a></li>
-
-                       
+                        <li><a href="mailto:netcelxpress@gmail.com">netcelxpress@gmail.com</a></li>
+                        <li><a href="tel:31998251298">(31) 99825-1298</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Produtos</h3>
                     <ul>
-                         <li><a href="#linha-industrial">Linha Industrial</a></li>
+                        <li><a href="#linha-industrial">Linha Industrial</a></li>
                         <li><a href="#linha-domestica">Linha Doméstica</a></li>
                         <li><a href="https://wa.me/553798251298?text=Olá! Quero saber mais sobre peças sob medida." target="_blank">Peças Sob Medida</a></li>
-                          <li><a href="https://wa.me/c/553798251298" target="_blank">Catálogo Completo</a></li>
+                        <li><a href="https://wa.me/c/553798251298" target="_blank">Catálogo Completo</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Serviços</h3>
                     <ul>
-                            <li><a href="https://wa.me/553798251298?text=Olá! Quero saber mais sobre atacado." target="_blank">Atacado</a></li>
-              
-                         <li><a href="https://wa.me/553798251298?text=Olá! Quero saber mais sobre varejo." target="_blank">Varejo</a></li>
-              
-                     <li><a href="https://wa.me/553798251298?text=Olá! Quero fazer uma encomenda." target="_blank">Encomendas</a></li>
-                         <li><a href="https://wa.me/553798251298?text=Olá! Como faço para comprar" target="_blank">Como Comprar</a></li>
+                        <li><a href="https://wa.me/553798251298?text=Olá! Quero saber mais sobre atacado." target="_blank">Atacado</a></li>
+                        <li><a href="https://wa.me/553798251298?text=Olá! Quero saber mais sobre varejo." target="_blank">Varejo</a></li>
+                        <li><a href="https://wa.me/553798251298?text=Olá! Quero fazer uma encomenda." target="_blank">Encomendas</a></li>
+                        <li><a href="https://wa.me/553798251298?text=Olá! Como faço para comprar" target="_blank">Como Comprar</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                  
                     <ul>
-
-
-
-<li>
-  <a href="#">
-    <img src="https://i.postimg.cc/63vpJxdT/ssl-logo.png" alt="Site seguro" style="width:120px;">
-  </a>
-</li>
-
-                        
+                        <li>
+                            <a href="#">
+                                <img src="https://i.postimg.cc/63vpJxdT/ssl-logo.png" alt="Site seguro" style="width:120px;">
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
